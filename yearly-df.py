@@ -8,5 +8,6 @@ for year in nba_range:
     df_by_year_def[year] = make_one_year_team_cols_df(year, table_indicator="Opponent Stats Table")
     
 for year in nba_range:
+    print "-------YEAR=%d-------" %year
     print df_by_year_off[year].head()
     print df_by_year_def[year].head()
