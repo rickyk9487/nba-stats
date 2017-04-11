@@ -36,11 +36,11 @@ def find_stats_string(text, table_indicator="Team Stats Table"):
             start_idx = i
     return string_split, start_idx
 
-# string_split, start_idx = find_stats_string(text, table_indicator="Opponent Stats Table") # test
 
 # find column names from string
 def find_team_cols(text):
     #TODO: Fix magic numbers
+    string_split, start_idx = find_stats_string(text, table_indicator="Opponent Stats Table") # test
     columns = string_split[start_idx+4:start_idx+30]
     team_cols = []
     for word in columns:
@@ -59,7 +59,7 @@ def find_team_row(team_stat_list, team_cols):
         x = re.findall(stat_pattern, stat[1]) 
         if x:
             dict[stat[0]] = float(x[0][1:-1])
-    dict[team_cols[0]] = find_team_rank(team_stat_list[1])
+    dict[team_cols[0]] = find_rank(team_stat_list[1])
     dict[team_cols[1]] = find_team_name(team_stat_list[3])
     return dict
 
